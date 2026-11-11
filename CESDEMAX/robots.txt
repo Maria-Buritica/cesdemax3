@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Al publicar, agrega aquí la URL absoluta del sitemap con tu dominio real.

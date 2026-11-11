@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050505">
+  <title>Carrito y orden | CESDEMAX</title>
+  <meta name="description" content="Revisa tu selección de entradas, ajusta cantidades y completa una orden de pago de demostración en CESDEMAX.">
+  <meta property="og:type" content="website"><meta property="og:title" content="Carrito y orden | CESDEMAX"><meta property="og:description" content="Resumen de entradas y pago de prueba."><meta property="og:image" content="assets/images/hero-cinema.webp">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/data.js"></script><script defer src="js/app.js"></script><script defer src="js/carrito.js"></script>
+</head>
+<body data-page="carrito">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="CESDEMAX, ir al inicio"><span class="brand-mark" aria-hidden="true">C</span><span class="brand-word">CESDE<strong>MAX</strong><small>CINEMAX CESDE</small></span></a>
+    <nav class="site-nav" id="site-nav" aria-label="Navegación principal"><a href="index.html" data-page-link="inicio">Inicio</a><a href="cartelera.html" data-page-link="cartelera">Cartelera</a><a href="index.html#nosotros">Nosotros</a><a href="index.html#aliados">Aliados</a><a href="carrito.html" data-page-link="carrito">Carrito</a></nav>
+    <div class="site-actions"><a class="nav-cart" href="carrito.html" aria-label="Abrir carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 2h2l2.7 12.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6L22 7H5"/></svg><span data-cart-count hidden>0</span></a><a class="nav-account" href="login.html"><span aria-hidden="true">↗</span><span data-account-label>Mi cuenta</span></a><button class="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></header>
+
+  <main id="contenido">
+    <section class="page-hero"><div class="container page-hero-inner"><div><span class="eyebrow">CESDEMAX / Tu compra</span><h1 class="display-title">Casi en la <span class="pink">pantalla.</span></h1><p>Comprueba tus entradas, revisa el total y crea una orden de prueba desde tu cuenta.</p></div><div class="page-index" aria-hidden="true">02—04</div></div></section>
+    <section class="section"><div class="container">
+      <div class="empty-state" id="cart-empty" hidden><div class="empty-state-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 2h2l2.7 12.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6L22 7H5"/></svg></div><h2>Tu carrito está esperando.</h2><p>Aún no hay entradas seleccionadas. Explora la cartelera y elige tus asientos.</p><a class="btn btn--primary" href="cartelera.html">Ir a la cartelera <span aria-hidden="true">→</span></a></div>
+
+      <div id="cart-content" hidden>
+        <div class="cart-grid">
+          <section class="panel cart-panel" aria-labelledby="cart-heading">
+            <h2 id="cart-heading">Resumen de entradas</h2>
+            <div class="cart-film"><img id="cart-poster" src="assets/images/pelicula-1.webp" alt="Afiche de la película seleccionada"><div><span class="movie-genre" id="cart-genre">Acción</span><h3 id="cart-film-title">Noche de Neón</h3><p id="cart-function-meta">Función · Sala</p><p id="cart-seat-label">Asientos seleccionados</p></div></div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="order-total"><span>Total de entradas</span><strong id="cart-total">$0</strong></div>
+            <button class="btn btn--ghost btn--small" id="clear-cart" type="button">Vaciar carrito</button>
+          </section>
+
+          <section class="panel cart-panel" aria-labelledby="continue-heading">
+            <h2 id="continue-heading">Continuar con tu orden</h2>
+            <div class="login-gate" id="login-gate" hidden><h3>Identifícate para continuar.</h3><p>Tu selección queda guardada en este navegador. Inicia sesión o crea una cuenta para revisar la orden.</p><a class="btn btn--yellow" href="login.html?next=carrito.html">Iniciar sesión / Registrarme <span aria-hidden="true">→</span></a></div>
+            <div id="checkout-area" hidden>
+              <p class="muted" id="checkout-greeting" style="margin-top:0;font-size:.82rem"></p>
+              <form class="checkout-form" id="checkout-form" novalidate>
+                <div class="notice">Modo de demostración: no se realiza ningún cobro. Para aprobar la prueba usa <strong>4444 4444 4444 4444</strong> o <strong>4242 4242 4242 4242</strong>. La tarjeta 5555 5555 5555 5555 simula un rechazo.</div>
+                <div class="field"><label for="card-number">Número de tarjeta de prueba</label><input id="card-number" name="card-number" inputmode="numeric" autocomplete="cc-number" placeholder="4444 4444 4444 4444" maxlength="19" required></div>
+                <div class="form-grid"><div class="field"><label for="card-exp">Vencimiento (MM/AA)</label><input id="card-exp" name="card-exp" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5" required></div><div class="field"><label for="card-cvv">CVV</label><input id="card-cvv" name="card-cvv" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4" required></div></div>
+                <label class="check-line"><input type="checkbox" id="save-payment" name="save-payment"><span>Guardar marca y últimos cuatro dígitos para esta demostración. El número completo y el CVV no se guardan en el perfil.</span></label>
+                <p class="form-error" id="payment-error" role="alert"></p>
+                <button class="btn btn--primary" type="submit" id="pay-button">Completar orden de prueba <span aria-hidden="true">→</span></button>
+              </form>
+            </div>
+            <div class="payment-success" id="payment-success" hidden aria-live="polite"><strong>¡Orden creada!</strong><p id="success-message" style="color:#c7c7c7;margin:8px 0 16px"></p><a class="btn btn--yellow" href="login.html">Ver mi cuenta y mis órdenes</a></div>
+          </section>
+        </div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">C</span><span class="brand-word">CESDE<strong>MAX</strong><small>CINEMAX CESDE</small></span></a><p>Proyecto académico de boletería de cine desarrollado en CESDE. La experiencia de compra y los pagos disponibles en esta versión son demostrativos y se guardan localmente en el navegador.</p></div><div class="footer-col"><h3>Explora</h3><div class="footer-links"><a href="index.html">Inicio</a><a href="cartelera.html">Cartelera</a><a href="index.html#nosotros">Nosotros</a><a href="index.html#aliados">Aliados</a><a href="login.html">Mi cuenta</a></div></div><div class="footer-col"><h3>Contacto</h3><div class="footer-links"><a data-current-email href="mailto:cinemaxcesde@gmail.com">cinemaxcesde@gmail.com</a><span>Medellín, Colombia</span><span>Proyecto académico CESDE</span></div></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> CESDEMAX · CINEMAX CESDE</span><span class="footer-note">Catálogo y pago de demostración. No representa una taquilla comercial ni realiza cobros reales.</span></div></footer>
+  <a class="back-top" href="#contenido" aria-label="Volver al inicio de la página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 15 7-7 7 7"/></svg></a>
+</body>
+</html>

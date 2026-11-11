@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050505">
+  <title>Cartelera | CESDEMAX</title>
+  <meta name="description" content="Consulta las cinco películas, sus funciones de demostración y elige hasta ocho asientos General o VIP en CESDEMAX.">
+  <meta property="og:type" content="website"><meta property="og:title" content="Cartelera | CESDEMAX"><meta property="og:description" content="Explora películas, horarios y asientos de prueba."><meta property="og:image" content="assets/images/hero-cinema.webp">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/data.js"></script><script defer src="js/app.js"></script><script defer src="js/cartelera.js"></script>
+</head>
+<body data-page="cartelera">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="CESDEMAX, ir al inicio"><span class="brand-mark" aria-hidden="true">C</span><span class="brand-word">CESDE<strong>MAX</strong><small>CINEMAX CESDE</small></span></a>
+    <nav class="site-nav" id="site-nav" aria-label="Navegación principal"><a href="index.html" data-page-link="inicio">Inicio</a><a href="cartelera.html" data-page-link="cartelera">Cartelera</a><a href="index.html#nosotros">Nosotros</a><a href="index.html#aliados">Aliados</a><a href="carrito.html" data-page-link="carrito">Carrito</a></nav>
+    <div class="site-actions"><a class="nav-cart" href="carrito.html" aria-label="Abrir carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 2h2l2.7 12.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6L22 7H5"/></svg><span data-cart-count hidden>0</span></a><a class="nav-account" href="login.html"><span aria-hidden="true">↗</span><span data-account-label>Mi cuenta</span></a><button class="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div></header>
+
+  <main id="contenido">
+    <section class="page-hero"><div class="container page-hero-inner"><div><span class="eyebrow">CESDEMAX / Cartelera</span><h1 class="display-title">La función <span class="pink">te espera.</span></h1><p>Elige una película, consulta sus horarios y selecciona tus asientos. El catálogo corresponde a la programación de demostración documentada para el proyecto.</p></div><div class="page-index" aria-hidden="true">01—05</div></div></section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">01 / Películas</span><h2 class="section-title">¿Qué quieres ver hoy?</h2><p class="section-copy">Cinco historias para explorar. Selecciona una tarjeta para ver su descripción y las funciones disponibles.</p></div><div class="muted" style="font-size:.76rem">Tarifas de prueba: <strong class="yellow">General $15.000</strong> · <strong class="yellow">VIP $25.000</strong></div></div>
+        <div class="filter-row" role="group" aria-label="Filtrar películas por género">
+          <button class="filter-chip" type="button" data-filter="Todos" aria-pressed="true">Todas</button>
+          <button class="filter-chip" type="button" data-filter="Acción" aria-pressed="false">Acción</button>
+          <button class="filter-chip" type="button" data-filter="Ciencia ficción" aria-pressed="false">Ciencia ficción</button>
+          <button class="filter-chip" type="button" data-filter="Aventura" aria-pressed="false">Aventura</button>
+          <button class="filter-chip" type="button" data-filter="Terror" aria-pressed="false">Terror</button>
+          <button class="filter-chip" type="button" data-filter="Romance" aria-pressed="false">Romance</button>
+        </div>
+        <div class="movie-grid" id="movie-grid" aria-live="polite"></div>
+
+        <section class="movie-detail panel" id="movie-detail" aria-labelledby="selected-title">
+          <div class="movie-detail-poster"><img id="selected-poster" src="assets/images/pelicula-1.webp" alt="Afiche de Noche de Neón"></div>
+          <div><span class="eyebrow">Película seleccionada</span><h2 id="selected-title">Noche de Neón</h2><p id="selected-description">Dos agentes persiguen a una red criminal por una ciudad que nunca apaga sus luces.</p><div class="movie-meta"><span class="meta-pill" id="selected-genre">Acción</span><span class="meta-pill" id="selected-duration">118 minutos</span></div><h3 class="subsection-title" style="margin-top:28px">Elige tu función</h3><div class="function-grid" id="function-grid"></div></div>
+        </section>
+
+        <section id="seat-section" hidden>
+          <div class="section-head" style="margin:45px 0 20px"><div><span class="eyebrow">02 / Selección de asientos</span><h2 class="section-title" style="font-size:clamp(2.5rem,4vw,3.7rem)">Tu lugar frente a la pantalla.</h2><p class="section-copy" id="seat-function-label">Seleccionaste una función.</p></div></div>
+          <div class="seat-layout panel">
+            <div><div class="screen">PANTALLA</div><div class="seat-map" id="seat-map" aria-label="Mapa interactivo de asientos"></div><div class="seat-legend"><span class="legend-item"><i class="legend-dot vip"></i> VIP · $25.000</span><span class="legend-item"><i class="legend-dot"></i> General · $15.000</span><span class="legend-item"><i class="legend-dot selected"></i> Seleccionado</span><span class="legend-item"><i class="legend-dot occupied"></i> Ocupado</span></div></div>
+            <aside class="selection-summary"><h3>Tu selección</h3><div class="summary-line"><span>Asientos elegidos</span><strong id="seat-count">0 / 8</strong></div><div class="summary-line"><span>VIP</span><strong id="vip-count">0</strong></div><div class="summary-line"><span>General</span><strong id="general-count">0</strong></div><div class="summary-total"><span>Total</span><strong id="seat-total">$0</strong></div><button class="btn btn--primary" id="continue-cart" type="button" disabled>Continuar al carrito <span aria-hidden="true">→</span></button><p class="helper-text">Puedes elegir hasta ocho asientos por función. El asiento se marca como ocupado al completar el pago de prueba.</p></aside>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="section section--tight" style="padding-top:0"><div class="container notice">Los horarios, salas y tarifas corresponden al catálogo de prueba del proyecto académico. No se ofrece selector de fecha ni se confirma una sala comercial física.</div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">C</span><span class="brand-word">CESDE<strong>MAX</strong><small>CINEMAX CESDE</small></span></a><p>Proyecto académico de boletería de cine desarrollado en CESDE. La experiencia de compra y los pagos disponibles en esta versión son demostrativos y se guardan localmente en el navegador.</p></div><div class="footer-col"><h3>Explora</h3><div class="footer-links"><a href="index.html">Inicio</a><a href="cartelera.html">Cartelera</a><a href="index.html#nosotros">Nosotros</a><a href="index.html#aliados">Aliados</a><a href="login.html">Mi cuenta</a></div></div><div class="footer-col"><h3>Contacto</h3><div class="footer-links"><a data-current-email href="mailto:cinemaxcesde@gmail.com">cinemaxcesde@gmail.com</a><span>Medellín, Colombia</span><span>Proyecto académico CESDE</span></div></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> CESDEMAX · CINEMAX CESDE</span><span class="footer-note">Catálogo y pago de demostración. No representa una taquilla comercial ni realiza cobros reales.</span></div></footer>
+  <a class="back-top" href="#contenido" aria-label="Volver al inicio de la página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 15 7-7 7 7"/></svg></a>
+</body>
+</html>
